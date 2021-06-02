@@ -16,7 +16,7 @@ func main() {
 		Username: "root",
 		Password: "root123",
 		Port:     3306,
-		DBName:   "admin",
+		DBName:   "mysql",
 	}); err != nil {
 		log.Fatalln("Could not connect to database: ", err)
 	}
