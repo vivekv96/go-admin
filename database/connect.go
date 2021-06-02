@@ -2,7 +2,9 @@ package database
 
 import (
 	"fmt"
+	"log"
 
+	"github.com/vivekv96/go-admin/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -31,9 +33,9 @@ func ConnectToMySQL(conf *MySQLConfig) error {
 	Gorm.Exec("CREATE DATABASE IF NOT EXISTS `admin`")
 	Gorm.Exec("USE `admin`")
 
-	//if err := Gorm.AutoMigrate(&models.User{}, &models.PasswordReset{}); err != nil {
-	//	log.Fatalln("auto-migrate failed, err: ", err)
-	//}
+	if err := Gorm.AutoMigrate(&models.User{}); err != nil {
+		log.Fatalln("auto-migrate failed, err: ", err)
+	}
 
 	return nil
 }
